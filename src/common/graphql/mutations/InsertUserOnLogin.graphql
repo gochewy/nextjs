@@ -1,0 +1,12 @@
+mutation InserUserOnLogin($username: String, $email: String){
+    insert_users_one(object:
+    {
+        username: $username,
+        email: $email
+    },
+        on_conflict: {constraint: users_username_key, update_columns: []}
+    ) {
+        username
+        email
+    }
+}

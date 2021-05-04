@@ -1,0 +1,8 @@
+mutation AddTodo($todo: todos_insert_input!) {
+    insert_todos_one(object: $todo) {
+        id,
+        userId,
+        title,
+        status
+    }
+}

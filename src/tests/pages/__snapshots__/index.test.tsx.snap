@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page should match snapshot 1`] = `
+<div
+  style={
+    Object {
+      "margin": "auto",
+      "maxWidth": 600,
+      "padding": "50px",
+    }
+  }
+>
+  <div>
+    <p>
+      Name: 
+      joe
+    </p>
+    <p>
+      Email: 
+      hhhh
+    </p>
+    <p>
+      ID: 
+      fffff
+    </p>
+    <p>
+      Token:
+      <br />
+      dfdfdfdf
+    </p>
+    <button
+      name="Logout"
+      onClick={[Function]}
+    >
+      Logout
+    </button>
+  </div>
+</div>
+`;

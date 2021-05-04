@@ -1,0 +1,10 @@
+query AllTodosByUserId {
+    todos {
+        title
+        created_at
+        id
+        status
+        updated_at
+        userId
+    }
+}

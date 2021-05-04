@@ -1,0 +1,10 @@
+subscription AllTodosCurrentUser($limit: Int!, $offset: Int!) {
+    todos(limit: $limit, offset: $offset, order_by: {updated_at: asc}) {
+        title
+        created_at
+        id
+        status
+        updated_at
+        userId
+    }
+}
