@@ -19,7 +19,7 @@ const PrimaryLayout = memo(({Component, pageProps}: PrimaryLayoutProps) => {
     const classes = useStyles();
     const isAuthed = useAppSelector((state => !!state.auth.token));
     const clientAuthed = useAppSelector((state => !!state.auth.clientAuthed));
-    const isKeycloakEnabled = config.dev.modulesEnabled.auth;
+    const isKeycloakEnabled = config.modules.auth.enabled;
     if(!isKeycloakEnabled) {
         return (
             <Grid container justify="center" alignItems="center" className={classes.loginPage}>

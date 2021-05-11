@@ -3,7 +3,7 @@ declare const Keycloak: any;
 let keycloak = process.browser ? new Keycloak(
     {
         "realm": "Sample",
-        "auth-server-url": "http://modules.swarn.ecdev.site/auth/",
+        "auth-server-url": "http://localhost:9001/auth/",
         "ssl-required": "external",
         "resource": "sample-client",
         "public-client": true,
