@@ -11,13 +11,14 @@ class MyDocument extends Document {
 
   render() {
     const isAuthEnabled = config.modules.auth.enabled;
+    console.log("potatoes", isAuthEnabled);
     return (
       <Html>
         {isAuthEnabled ? (
           <Head>
             <script type="application/javascript" src="http://localhost:9001/auth/js/keycloak.js" />
           </Head>
-        ) : null}
+        ) : <Head />}
         <body>
           <Main />
           <NextScript />
