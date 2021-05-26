@@ -1,7 +1,7 @@
 import keycloak from '../../../lib/keycloak';
 
 const useLogin = () => () => {
-    keycloak.login();
+  keycloak.login();
 };
 
 export default useLogin;

@@ -11,31 +11,31 @@ export interface AuthState {
 }
 
 const initialState: AuthState = {
-    isAuthed: false,
-    token: '',
-    userId: '',
-    email: '',
-    firstName: '',
-    lastName: '',
-    clientAuthed: false
+  isAuthed: false,
+  token: '',
+  userId: '',
+  email: '',
+  firstName: '',
+  lastName: '',
+  clientAuthed: false,
 };
 
 export const slice = createSlice({
-    name: 'auth',
-    initialState,
-    reducers: {
-        setAuthState: (state, action: PayloadAction<Partial<AuthState>>) => ({
-            ...state,
-            ...action.payload,
-        }),
-    },
+  name: 'auth',
+  initialState,
+  reducers: {
+    setAuthState: (state, action: PayloadAction<Partial<AuthState>>) => ({
+      ...state,
+      ...action.payload,
+    }),
+  },
 });
 
 export const actions = {
-    ...slice.actions,
+  ...slice.actions,
 };
 
 export default {
-    slice,
-    actions,
+  slice,
+  actions,
 };

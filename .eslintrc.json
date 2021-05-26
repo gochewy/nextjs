@@ -24,7 +24,8 @@
     "react-hooks",
     "@typescript-eslint",
     "jasmine",
-    "jest"
+    "jest",
+    "unicorn"
   ],
   "rules": {
     "react/jsx-filename-extension": [2, { "extensions": [
@@ -38,7 +39,15 @@
     "import/extensions": "off",
     "react/require-default-props": "off",
     "react/prop-types": "off",
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "unicorn/filename-case": [
+      "error",
+      {
+        "case": "kebabCase"
+      }
+    ]
   },
   "settings": {
     "import/resolver": {

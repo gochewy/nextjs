@@ -1,4 +1,4 @@
-export {default} from '../src/pages/Landing';
+export { default } from '../src/pages/Landing';
 // import useKeycloakInitialized from "../src/common/hooks/useKeycloakInitialized";
 // import useKeycloak from "../src/common/hooks/useKeycloak";
 //

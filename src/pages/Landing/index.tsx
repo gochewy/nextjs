@@ -1,11 +1,9 @@
-import {memo} from "react";
-import Header from "../../common/components/Header/Header";
-import {Box} from "@material-ui/core";
-const Home = memo(() => {
-    return (
-        <>
-            <Header />
-        </>
-    )
-})
+import { memo } from "react";
+import Header from "../../common/components/Header/header";
+
+const Home = memo(() => (
+  <>
+    <Header />
+  </>
+));
 export default Home;

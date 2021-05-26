@@ -2,11 +2,11 @@ import { memo } from "react";
 import posthog from "posthog-js";
 import {
   Button,
-  Grid, makeStyles, Typography,
+  Grid, makeStyles,
 } from "@material-ui/core";
 import Login from "../../../../modules/auth/components/Login";
 import { useAppSelector } from "../../../../store";
-import Navbar from "../../Toolbar/Navbar";
+import Navbar from "../../Toolbar/navbar";
 import config from "../../../../../../chewy.json";
 
 export interface PrimaryLayoutProps {

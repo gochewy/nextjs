@@ -3,14 +3,14 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import auth from './slices/auth';
 
 const reducer = combineReducers({
-    auth: auth.slice.reducer,
+  auth: auth.slice.reducer,
 });
 
 // @ts-ignore
 export type AppState = ReturnType<typeof reducer>;
 
 export const store = configureStore({
-    reducer,
+  reducer,
 });
 
 export type AppDispatch = typeof store.dispatch;
