@@ -7,7 +7,6 @@ import {
 import Login from "../../../../modules/auth/components/Login";
 import { useAppSelector } from "../../../../store";
 import Navbar from "../../Toolbar/navbar";
-import config from "../../../../../../chewy.json";
 
 export interface PrimaryLayoutProps {
   Component: any;
@@ -23,8 +22,7 @@ const PrimaryLayout = memo(({ Component, pageProps }: PrimaryLayoutProps) => {
   const classes = useStyles();
   const isAuthed = useAppSelector(((state) => !!state.auth.token));
   const clientAuthed = useAppSelector(((state) => !!state.auth.clientAuthed));
-  console.log(config);
-  const isKeycloakEnabled = config.modules.auth.enabled;
+  const isKeycloakEnabled = true;
   console.log(isKeycloakEnabled);
   if (!isKeycloakEnabled) {
     return (

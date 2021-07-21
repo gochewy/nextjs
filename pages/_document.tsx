@@ -1,7 +1,6 @@
 import Document, {
   Html, Head, Main, NextScript,
 } from 'next/document';
-import config from '../../chewy.json';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -10,7 +9,7 @@ class MyDocument extends Document {
   }
 
   render() {
-    const isAuthEnabled = config.modules.auth.enabled;
+    const isAuthEnabled = true;
     console.log("potatoes", isAuthEnabled);
     return (
       <Html>
