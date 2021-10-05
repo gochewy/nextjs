@@ -1,15 +1,17 @@
+import config from "../../../chewy.json";
+
 declare const Keycloak: any;
-const realm = 'IRP';
+const realmName = config.projectName;
 const keycloak = process.browser ? new Keycloak(
   {
-    realm,
+    realm: `${realmName}`,
     "auth-server-url": "http://localhost:9001/auth/",
     "ssl-required": "external",
-    "resource": "sample-client",
+    resource: "sample-client",
     "public-client": true,
     "confidential-port": 0,
-    "clientId": "sample-client",
-    "scope": "openid email profile offline_access",
+    clientId: "sample-client",
+    scope: "openid email profile offline_access",
   },
 ) : undefined;
 

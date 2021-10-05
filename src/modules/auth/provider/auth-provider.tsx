@@ -102,7 +102,7 @@ const useTokenRefresh = () => {
 };
 const AuthProvider = ({
   children,
-}: {children: any}) => {
+}) => {
   useKeycloakInitialize();
   useOnAuthSuccess();
   useTokenRefresh();

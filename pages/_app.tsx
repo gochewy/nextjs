@@ -9,9 +9,13 @@ import PrimaryLayout from "../src/common/components/layout/PrimaryLayout/primary
 import AuthProvider from "../src/modules/auth/provider/auth-provider";
 import { store } from "../src/store";
 import { client } from '../src/common/graphql/client';
+import config from '../../chewy.json';
 
-function IRP({ Component, pageProps }) {
-  const isAuthEnabled = true;
+function XStack({ Component, pageProps }) {
+  useEffect(() => {
+    posthog.init("GUrzqLX-eu4TdFHwoFzCka6UmqqAqeCxq4VHRMfdP7M", { api_host: 'http://localhost:8000' });
+  }, []);
+  const isAuthEnabled = config.modules.auth.enabled;
   return (
     <>
       <Head>
@@ -34,4 +38,4 @@ function IRP({ Component, pageProps }) {
   );
 }
 
-export default IRP;
+export default XStack;
