@@ -1,8 +1,0 @@
-query GetSearchResults($query: String!) {
-    searchTodo(q: $query) {
-        id
-        userId
-        title
-        status
-    }
-}

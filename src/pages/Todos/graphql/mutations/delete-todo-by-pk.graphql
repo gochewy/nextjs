@@ -1,7 +1,0 @@
-mutation DeleteTodoByPk($id: uuid!) {
-    delete_todos_by_pk(id: $id) {
-        id
-        title
-        userId
-    }
-}

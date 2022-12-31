@@ -1,6 +1,0 @@
-mutation UpdateToDoByPk($id: uuid!, $status: Boolean!) {
-    update_todos_by_pk(pk_columns: {id: $id}, _set: {status: $status}) {
-        id,
-        status
-    }
-}
