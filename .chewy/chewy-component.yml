@@ -1,5 +1,5 @@
 repository: https://github.com/gochewy/nextjs.git
 name: nextjs
 type: source
-version: 0.1.1-branch
+version: main
 dependencies: []
