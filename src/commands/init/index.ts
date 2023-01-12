@@ -1,7 +1,7 @@
 import {Command, Flags} from '@oclif/core'
 
 export default class InitIndex extends Command {
-  static description = 'describe the command here'
+  static description = 'initializes the component after installation or when getting ready to develop (install dependencies, etc.)'
 
   static examples = [
     '<%= config.bin %> <%= command.id %>',
