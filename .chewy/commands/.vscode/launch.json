@@ -10,8 +10,7 @@
           ],
           "program": "${workspaceFolder}/bin/dev",
           "args": [
-            "hello",
-            "world",
+            "init",
           ],
       }
   ]
