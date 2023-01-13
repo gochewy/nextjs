@@ -1,5 +1,5 @@
 import * as chewy from '@gochewy/lib'
-import {Command, Flags} from '@oclif/core'
+import {Command} from '@oclif/core'
 import {exec} from 'node:child_process'
 
 export default class InitIndex extends Command {
@@ -9,14 +9,9 @@ export default class InitIndex extends Command {
     '<%= config.bin %> <%= command.id %>',
   ]
 
-  static flags = {
-    // flag with a value (-n, --name=VALUE)
-    name: Flags.string({char: 'n', description: 'name to print'}),
-    // flag with no value (-f, --force)
-    force: Flags.boolean({char: 'f'}),
-  }
+  static flags = {}
 
-  static args = [{name: 'file'}]
+  static args = []
 
   public async run(): Promise<void> {
     const process = exec('yarn install', {cwd: chewy.files.getComponentDir()})
