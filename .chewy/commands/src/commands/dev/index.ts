@@ -1,28 +1,39 @@
-import {Command, Flags} from '@oclif/core'
+import * as chewy from '@gochewy/lib'
+import {Command} from '@oclif/core'
+import {exec} from 'node:child_process'
 
 export default class DevIndex extends Command {
   static description = 'runs the component in development'
+  static strict = false
 
   static examples = [
     '<%= config.bin %> <%= command.id %>',
   ]
 
-  static flags = {
-    // flag with a value (-n, --name=VALUE)
-    name: Flags.string({char: 'n', description: 'name to print'}),
-    // flag with no value (-f, --force)
-    force: Flags.boolean({char: 'f'}),
-  }
+  static flags = {}
 
-  static args = [{name: 'file'}]
+  static args = []
 
   public async run(): Promise<void> {
-    const {args, flags} = await this.parse(DevIndex)
+    const {argv} = await this.parse(DevIndex)
 
-    const name = flags.name ?? 'world'
-    this.log(`hello ${name} from /workspace/chewy-global/component-commands/src/commands/dev/index.ts`)
-    if (args.file && flags.force) {
-      this.log(`you input --force and --file: ${args.file}`)
-    }
+    const cwd = chewy.files.getComponentDir()
+    const command = ['yarn', 'dev', ...argv].join(' ')
+    await new Promise((resolve, reject) => {
+      const child = exec(command, {cwd})
+      child.on('exit', code => {
+        if (code === 0) {
+          resolve(0)
+        } else {
+          reject(code)
+        }
+      })
+      child.stdout?.on('data', data => {
+        chewy.utils.log(data, {level: 'info'})
+      })
+      child.stderr?.on('data', data => {
+        chewy.utils.log(data, {level: 'error'})
+      })
+    })
   }
 }
