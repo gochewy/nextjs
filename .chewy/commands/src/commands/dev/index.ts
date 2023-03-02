@@ -1,6 +1,8 @@
 import * as chewy from '@gochewy/lib'
 import {Command} from '@oclif/core'
 import {exec} from 'node:child_process'
+import {LocalWorkspace} from "@pulumi/pulumi/automation"
+import {constants, utils} from '@gochewy/lib'
 
 export default class DevIndex extends Command {
   static description = 'runs the component in development'
@@ -17,23 +19,19 @@ export default class DevIndex extends Command {
   public async run(): Promise<void> {
     const {argv} = await this.parse(DevIndex)
 
-    const cwd = chewy.files.getComponentDir()
-    const command = ['yarn', 'dev', ...argv].join(' ')
-    await new Promise((resolve, reject) => {
-      const child = exec(command, {cwd})
-      child.on('exit', code => {
-        if (code === 0) {
-          resolve(0)
-        } else {
-          reject(code)
-        }
-      })
-      child.stdout?.on('data', data => {
-        chewy.utils.log(data, {level: 'info'})
-      })
-      child.stderr?.on('data', data => {
-        chewy.utils.log(data, {level: 'error'})
-      })
-    })
+    const stack = await LocalWorkspace.createOrSelectStack({
+      stackName: constants.CHEWY_DEV_ENV_NAME,
+      projectName: 'test',
+      program: async () => {},
+    }, {
+      projectSettings: {
+        name: 'test',
+        runtime: 'nodejs',
+        backend: {
+          url: 'file:///workspace/chewy-global/components/nextjs/.chewy/commands/tmp-backend',
+        },
+      }
+    });
+    console.log(stack)
   }
 }
