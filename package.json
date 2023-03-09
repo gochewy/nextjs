@@ -61,8 +61,13 @@
     "prepack": "yarn build && oclif manifest && oclif readme",
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif readme && git add README.md",
+    "lup": "chewy-cc rebuild lib && yarn upgrade @gochewy/lib",
+    "llocal": "yarn remove @gochewy/lib && yarn add file:/workspace/chewy-global/lib",
+    "lprod": "yarn remove @gochewy/lib && yarn add @gochewy/lib",
     "commands": "./bin/run",
-    "commands-dev": "./bin/dev"
+    "commands-dev": "./bin/dev",
+    "prepare": "(pwd | grep -q \"global/components\" && cd ../.. && husky install .chewy/commands/.husky)|| true",
+    "pull-upstream": "git subtree pull --prefix ./ --squash https://github.com/gochewy/component-commands main"
   },
   "engines": {
     "node": ">=12.0.0"
