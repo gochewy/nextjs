@@ -1,12 +1,10 @@
 import * as chewy from '@gochewy/lib'
-import {Command} from '@oclif/core'
-import {exec, execSync} from 'node:child_process'
-import {LocalWorkspace} from "@pulumi/pulumi/automation"
-import {constants, utils} from '@gochewy/lib'
-import { cwd } from 'node:process'
+import { constants } from '@gochewy/lib'
+import { Command } from '@oclif/core'
+import { LocalWorkspace } from "@pulumi/pulumi/automation"
+import { execSync } from 'node:child_process'
 import { resolve } from 'node:path'
-import { getProjectConfigDir } from '@gochewy/lib/dist/files'
-import { getInstalledComponentDefinition } from '@gochewy/lib/dist/components'
+import { cwd } from 'node:process'
 
 export default class DevIndex extends Command {
   static description = 'runs the component in development'
@@ -24,9 +22,10 @@ export default class DevIndex extends Command {
     const {argv} = await this.parse(DevIndex)
 
     const deploymentDir = resolve(cwd(), 'deployment');
-    const projectConfigDir = getProjectConfigDir();
-    const componentDefinition = getInstalledComponentDefinition();
-    const projectName = `${componentDefinition.type}-${componentDefinition.name}`
+    const projectConfigDir = chewy.files.getProjectConfigDir();
+    const chewyProjectName = chewy.project.getProjectConfig().name;
+    const componentDefinition = chewy.components.getInstalledComponentDefinition();
+    const pulumiProjectName = `${chewyProjectName}-${componentDefinition.type}-${componentDefinition.name}`
 
     execSync(`pulumi login file://${projectConfigDir}`)
 
@@ -35,7 +34,7 @@ export default class DevIndex extends Command {
       workDir: deploymentDir,
     }, {
       projectSettings: {
-        name: projectName,
+        name: pulumiProjectName,
         runtime: 'nodejs',
         backend: {
           url: `file://${projectConfigDir}`,
