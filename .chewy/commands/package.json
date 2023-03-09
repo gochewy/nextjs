@@ -26,7 +26,7 @@
     "husky": "^8.0.3"
   },
   "devDependencies": {
-    "@oclif/test": "^2.2.19",
+    "@oclif/test": "^2.2.20",
     "@types/chai": "^4",
     "@types/mocha": "^9.0.0",
     "@types/node": "^16.18.11",
@@ -36,7 +36,7 @@
     "eslint-config-oclif-typescript": "^1.0.3",
     "mocha": "^9",
     "oclif": "^3",
-    "shx": "^0.3.3",
+    "shx": "^0.3.4",
     "ts-node": "^10.9.1",
     "tslib": "^2.4.1",
     "typescript": "^4.9.4"
@@ -65,11 +65,12 @@
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif readme && git add README.md",
     "lup": "chewy-cc rebuild lib && yarn upgrade @gochewy/lib",
-    "llocal": "yarn remove @gochewy/lib && yarn add file:../../../../lib",
+    "llocal": "yarn remove @gochewy/lib && yarn add file:/workspace/chewy-global/lib",
     "lprod": "yarn remove @gochewy/lib && yarn add @gochewy/lib",
     "commands": "./bin/run",
     "commands-dev": "./bin/dev",
-    "prepare": "(pwd | grep -q \"global/components\" && cd ../.. && husky install .chewy/commands/.husky)|| true"
+    "prepare": "(pwd | grep -q \"global/components\" && cd ../.. && husky install .chewy/commands/.husky)|| true",
+    "pull-upstream": "git subtree pull --prefix ./ --squash https://github.com/gochewy/component-commands main"
   },
   "engines": {
     "node": ">=12.0.0"
