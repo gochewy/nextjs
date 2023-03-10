@@ -17,7 +17,7 @@
     "/oclif.manifest.json"
   ],
   "dependencies": {
-    "@gochewy/lib": "^0.1.1-beta.7",
+    "@gochewy/lib": "^0.1.1-beta.19",
     "@oclif/core": "^1.23.0",
     "@oclif/plugin-help": "^5",
     "@oclif/plugin-plugins": "^2.1.12"
@@ -67,7 +67,7 @@
     "commands": "./bin/run",
     "commands-dev": "./bin/dev",
     "prepare": "(pwd | grep -q \"global/components\" && cd ../.. && husky install .chewy/commands/.husky)|| true",
-    "pull-upstream": "git subtree pull --prefix ./ --squash https://github.com/gochewy/component-commands main"
+    "pull-upstream": "git subtree pull --prefix .chewy/commands --squash https://github.com/gochewy/component-commands main"
   },
   "engines": {
     "node": ">=12.0.0"
