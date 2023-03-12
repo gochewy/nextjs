@@ -21,7 +21,7 @@ export default class DevIndex extends Command {
   public async run(): Promise<void> {
     const {argv} = await this.parse(DevIndex)
 
-    const deploymentDir = resolve(cwd(), 'deployment');
+    const deploymentDir = resolve(cwd(), '..', 'deployment');
     const projectConfigDir = chewy.files.getProjectConfigDir();
     const chewyProjectName = chewy.project.getProjectConfig().name;
     const componentDefinition = chewy.components.getInstalledComponentDefinition();
