@@ -20,7 +20,8 @@
     "@gochewy/lib": "^0.1.1-beta.22",
     "@oclif/core": "^1.23.0",
     "@oclif/plugin-help": "^5",
-    "@oclif/plugin-plugins": "^2.1.12"
+    "@oclif/plugin-plugins": "^2.1.12",
+    "@pulumi/pulumi": "^3.57.1"
   },
   "devDependencies": {
     "@oclif/test": "^2.2.20",
