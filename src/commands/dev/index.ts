@@ -21,6 +21,10 @@ export default class DevIndex extends Command {
   public async run(): Promise<void> {
     const {argv} = await this.parse(DevIndex)
 
+    process.env.PULUMI_CONFIG_PASSPHRASE = chewy.environments.getEnvironmentSecret(
+      constants.CHEWY_DEV_ENV_NAME,
+    )
+
     const deploymentDir = resolve(cwd(), '..', 'deployment')
     const projectConfigDir = chewy.files.getProjectConfigDir()
     const chewyProjectName = chewy.project.getProjectConfig().name
