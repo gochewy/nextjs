@@ -1,0 +1,16 @@
+{
+    "name": "component-deployment",
+    "main": "index.ts",
+    "devDependencies": {
+        "@types/node": "^16"
+    },
+    "dependencies": {
+        "@gochewy/lib": "^0.1.1-beta.24",
+        "@pulumi/pulumi": "^3.0.0"
+    },
+    "scripts": {
+        "lup": "chewy-cc rebuild lib && yarn upgrade @gochewy/lib",
+        "llocal": "yarn remove @gochewy/lib && yarn add file:/workspace/chewy-global/lib",
+        "lprod": "yarn remove @gochewy/lib && yarn add @gochewy/lib"
+    }
+}
