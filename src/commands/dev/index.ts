@@ -45,5 +45,9 @@ export default class DevIndex extends Command {
         },
       },
     })
+
+    const upResult = await stack.up()
+
+    chewy.utils.log.info(`${upResult.outputs}`)
   }
 }
