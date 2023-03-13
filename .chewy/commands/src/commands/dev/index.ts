@@ -12,6 +12,7 @@ export default class DevIndex extends Command {
 
   static examples = ["<%= config.bin %> <%= command.id %>"];
 
+<<<<<<< HEAD
   static flags = {};
 
   static args = [];
@@ -49,5 +50,42 @@ export default class DevIndex extends Command {
 
     await stack.setConfig("test", { value: "test" });
     await stack.setConfig("secretTest", { value: "secretVal", secret: true });
+=======
+  static flags = {}
+
+  static args = []
+
+  public async run(): Promise<void> {
+    const {argv} = await this.parse(DevIndex)
+
+    process.env.PULUMI_CONFIG_PASSPHRASE = chewy.environments.getEnvironmentSecret(
+      constants.CHEWY_DEV_ENV_NAME,
+    )
+
+    const deploymentDir = resolve(cwd(), '..', 'deployment')
+    const projectConfigDir = chewy.files.getProjectConfigDir()
+    const chewyProjectName = chewy.project.getProjectConfig().name
+    const componentDefinition = chewy.components.getInstalledComponentDefinition()
+    const pulumiProjectName = `${chewyProjectName}-${componentDefinition.type}-${componentDefinition.name}`
+
+    execSync(`pulumi login file://${projectConfigDir}`)
+
+    const stack = await LocalWorkspace.createOrSelectStack({
+      stackName: constants.CHEWY_DEV_ENV_NAME,
+      workDir: deploymentDir,
+    }, {
+      projectSettings: {
+        name: pulumiProjectName,
+        runtime: 'nodejs',
+        backend: {
+          url: `file://${projectConfigDir}`,
+        },
+      },
+    })
+
+    const upResult = await stack.up()
+
+    chewy.utils.log.info(`${upResult.outputs}`)
+>>>>>>> de45602b3aa838101565530867bbe5f538e5c2d9
   }
 }

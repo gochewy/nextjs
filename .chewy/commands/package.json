@@ -17,12 +17,12 @@
     "/oclif.manifest.json"
   ],
   "dependencies": {
-    "@gochewy/lib": "^0.1.1-beta.22",
+    "@pulumi/docker": "^3.6.1",
+    "@gochewy/lib": "^0.1.1-beta.30",
     "@oclif/core": "^1.23.0",
     "@oclif/plugin-help": "^5",
     "@oclif/plugin-plugins": "^2.1.12",
-    "@pulumi/docker": "^3.6.1",
-    "@pulumi/pulumi": "^3.55.0",
+    "@pulumi/pulumi": "^3.57.1",
     "husky": "^8.0.3"
   },
   "devDependencies": {
