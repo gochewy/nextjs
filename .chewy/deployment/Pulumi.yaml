@@ -1,4 +1,0 @@
-name: nextjs
-runtime: nodejs
-backend:
-  url: 'file:///workspace/chewy-global/components/nextjs/.chewy/deployment'
