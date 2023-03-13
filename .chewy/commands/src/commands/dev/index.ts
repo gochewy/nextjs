@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import * as chewy from "@gochewy/lib";
-import { constants } from "@gochewy/lib";
-import { Command } from "@oclif/core";
-import { LocalWorkspace } from "@pulumi/pulumi/automation";
-import { execSync } from "node:child_process";
-import { resolve } from "node:path";
-import { cwd } from "node:process";
-
-export default class DevIndex extends Command {
-  static description = "runs the component in development";
-  static strict = false;
-=======
 import * as chewy from '@gochewy/lib'
 import {constants} from '@gochewy/lib'
 import {Command} from '@oclif/core'
@@ -22,11 +9,9 @@ import {cwd} from 'node:process'
 export default class DevIndex extends Command {
   static description = 'runs the component in development'
   static strict = false
->>>>>>> f5a21c7ce0f5ec29180e353af1436d320eea87d8
 
   static examples = ["<%= config.bin %> <%= command.id %>"];
 
-<<<<<<< HEAD
   static flags = {};
 
   static args = [];
@@ -64,34 +49,5 @@ export default class DevIndex extends Command {
 
     await stack.setConfig("test", { value: "test" });
     await stack.setConfig("secretTest", { value: "secretVal", secret: true });
-=======
-  static flags = {}
-
-  static args = []
-
-  public async run(): Promise<void> {
-    const {argv} = await this.parse(DevIndex)
-
-    const deploymentDir = resolve(cwd(), '..', 'deployment')
-    const projectConfigDir = chewy.files.getProjectConfigDir()
-    const chewyProjectName = chewy.project.getProjectConfig().name
-    const componentDefinition = chewy.components.getInstalledComponentDefinition()
-    const pulumiProjectName = `${chewyProjectName}-${componentDefinition.type}-${componentDefinition.name}`
-
-    execSync(`pulumi login file://${projectConfigDir}`)
-
-    const stack = await LocalWorkspace.createOrSelectStack({
-      stackName: constants.CHEWY_DEV_ENV_NAME,
-      workDir: deploymentDir,
-    }, {
-      projectSettings: {
-        name: pulumiProjectName,
-        runtime: 'nodejs',
-        backend: {
-          url: `file://${projectConfigDir}`,
-        },
-      },
-    })
->>>>>>> f5a21c7ce0f5ec29180e353af1436d320eea87d8
   }
 }
