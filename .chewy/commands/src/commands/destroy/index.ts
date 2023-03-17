@@ -6,8 +6,8 @@ import {execSync} from 'node:child_process'
 import {resolve} from 'node:path'
 import {cwd} from 'node:process'
 
-export default class DeployIndex extends Command {
-  static description = 'deploys the component'
+export default class DestroyIndex extends Command {
+  static description = 'describe the command here'
 
   static examples = [
     '<%= config.bin %> <%= command.id %>',
@@ -18,7 +18,8 @@ export default class DeployIndex extends Command {
   static args = [{name: 'environment'}]
 
   public async run(): Promise<void> {
-    const {args} = await this.parse(DeployIndex)
+    const {args} = await this.parse(DestroyIndex)
+
     const environment = args.environment || constants.CHEWY_DEV_ENV_NAME
 
     process.env.PULUMI_CONFIG_PASSPHRASE = chewy.environments.getEnvironmentSecret(
@@ -29,15 +30,16 @@ export default class DeployIndex extends Command {
     const projectConfigDir = chewy.files.getProjectConfigDir()
     const chewyProjectName = chewy.project.getProjectConfig().name
     const componentDefinition = chewy.components.getInstalledComponentDefinition()
+    const pulumiProjectName = `${chewyProjectName}-${componentDefinition.type}-${componentDefinition.name}`
 
     execSync(`pulumi login file://${projectConfigDir}`)
 
     const stack = await LocalWorkspace.createOrSelectStack({
-      stackName: `${constants.CHEWY_DEV_ENV_NAME}-${componentDefinition.name}`,
+      stackName: constants.CHEWY_DEV_ENV_NAME,
       workDir: deploymentDir,
     }, {
       projectSettings: {
-        name: chewyProjectName,
+        name: pulumiProjectName,
         runtime: 'nodejs',
         backend: {
           url: `file://${projectConfigDir}`,
@@ -45,8 +47,8 @@ export default class DeployIndex extends Command {
       },
     })
 
-    const upResult = await stack.up()
+    const destroyResult = await stack.destroy()
 
-    chewy.utils.log.info(`${JSON.stringify(upResult.outputs)}`)
+    chewy.utils.log.info(`${destroyResult.summary}`)
   }
 }
