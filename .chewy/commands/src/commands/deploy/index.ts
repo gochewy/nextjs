@@ -27,13 +27,17 @@ export default class DeployIndex extends Command {
 
     const deploymentDir = resolve(cwd(), '..', 'deployment')
     const projectConfigDir = chewy.files.getProjectConfigDir()
-    const chewyProjectName = chewy.project.getProjectConfig().name
-    const componentDefinition = chewy.components.getInstalledComponentDefinition()
+    const chewyProjectName = chewy.project.getProjectConfig().name // TODO: maybe this should be the ID?
+    const componentName = chewy.components.getComponentName()
+
+    if (!componentName) {
+      throw new Error('Component name is not defined')
+    }
 
     execSync(`pulumi login file://${projectConfigDir}`)
 
     const stack = await LocalWorkspace.createOrSelectStack({
-      stackName: `${constants.CHEWY_DEV_ENV_NAME}-${componentDefinition.name}`,
+      stackName: chewy.components.getDeployedComponentId({name: componentName}, environment),
       workDir: deploymentDir,
     }, {
       projectSettings: {
