@@ -19,10 +19,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@gochewy/lib@^0.1.1-beta.24":
-  version "0.1.1-beta.24"
-  resolved "https://registry.yarnpkg.com/@gochewy/lib/-/lib-0.1.1-beta.24.tgz#fa35343bf3b92b6baa7dd6cca3c08c7597300f0a"
-  integrity sha512-3YO8MdPU8Z1Q54uKtDN9dVanFZ482ANc5rts3+0dCg+1NMPQX6qTf+iTVXmMN9l1mm0DQlEiF9KeMcbfJbBGlw==
+"@gochewy/lib@0.1.1-beta.35":
+  version "0.1.1-beta.35"
+  resolved "https://registry.yarnpkg.com/@gochewy/lib/-/lib-0.1.1-beta.35.tgz#37e8222b5123ae549e5874f69c08b1d933db51f5"
+  integrity sha512-AjA7kYd8dAYvkqZ0Dh08SX17pI1RMKk/lNjp4WsNSMcio6d3NKsA47wPtJKyaZx5odI924jc/qaeFGZhKS2Y9g==
   dependencies:
     "@types/fs-extra" "^9.0.13"
     "@types/js-yaml" "^4.0.5"
@@ -390,6 +390,13 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
+"@pulumi/command@^0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/command/-/command-0.7.1.tgz#a8baabd053a40eef38221c66c29b484dfce26d27"
+  integrity sha512-glPRnkR+jKK/av1CsarIxRuyRSaDiV8Ht4OV5qsTXHRFu8jGbbJrTXT8K1rq1ZImQioS4L/NL9BjhzNjZcKEfA==
+  dependencies:
+    "@pulumi/pulumi" "^3.0.0"
+
 "@pulumi/pulumi@^3.0.0":
   version "3.57.1"
   resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.57.1.tgz#5d356a3b1899346e844953b1e99056f7aee37857"
@@ -608,6 +615,8 @@ argparse@^1.0.7:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/argparse/-/argparse-1.0.10.tgz#bcd6791ea5ae09725e17e5ad988134cd40b3d911"
   integrity sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==
+  dependencies:
+    sprintf-js "~1.0.2"
 
 argparse@^2.0.1:
   version "2.0.1"
@@ -2323,6 +2332,37 @@ source-map@^0.6.0:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
+spdx-correct@^3.0.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/spdx-correct/-/spdx-correct-3.2.0.tgz#4f5ab0668f0059e34f9c00dce331784a12de4e9c"
+  integrity sha512-kN9dJbvnySHULIluDHy32WHRUu3Og7B9sbY7tsFLctQkIqnMh3hErYgdMjTYuqmcXX+lK5T1lnUt3G7zNswmZA==
+  dependencies:
+    spdx-expression-parse "^3.0.0"
+    spdx-license-ids "^3.0.0"
+
+spdx-exceptions@^2.1.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/spdx-exceptions/-/spdx-exceptions-2.3.0.tgz#3f28ce1a77a00372683eade4a433183527a2163d"
+  integrity sha512-/tTrYOC7PPI1nUAgx34hUpqXuyJG+DTHJTnIULG4rDygi4xu/tfgmq1e1cIRwRzwZgo4NLySi+ricLkZkw4i5A==
+
+spdx-expression-parse@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/spdx-expression-parse/-/spdx-expression-parse-3.0.1.tgz#cf70f50482eefdc98e3ce0a6833e4a53ceeba679"
+  integrity sha512-cbqHunsQWnJNE6KhVSMsMeH5H/L9EpymbzqTQ3uLwNCLZ1Q481oWaofqH7nO6V07xlXwY6PhQdQ2IedWx/ZK4Q==
+  dependencies:
+    spdx-exceptions "^2.1.0"
+    spdx-license-ids "^3.0.0"
+
+spdx-license-ids@^3.0.0:
+  version "3.0.13"
+  resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.13.tgz#7189a474c46f8d47c7b0da4b987bb45e908bd2d5"
+  integrity sha512-XkD+zwiqXHikFZm4AX/7JSCXA98U5Db4AFd5XUg/+9UNtnH75+Z9KxtpYiJZx36mUDVOwH83pl7yvCer6ewM3w==
+
+sprintf-js@~1.0.2:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
+  integrity sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==
+
 string-width@^4.0.0, string-width@^4.1.0, string-width@^4.2.0:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
@@ -2633,6 +2673,9 @@ validate-npm-package-license@^3.0.1:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/validate-npm-package-license/-/validate-npm-package-license-3.0.4.tgz#fc91f6b9c7ba15c857f4cb2c5defeec39d4f410a"
   integrity sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==
+  dependencies:
+    spdx-correct "^3.0.0"
+    spdx-expression-parse "^3.0.0"
 
 wcwidth@^1.0.1:
   version "1.0.1"

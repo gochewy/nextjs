@@ -5,7 +5,8 @@
         "@types/node": "^16"
     },
     "dependencies": {
-        "@gochewy/lib": "^0.1.1-beta.24",
+        "@gochewy/lib": "0.1.1-beta.35",
+        "@pulumi/command": "^0.7.1",
         "@pulumi/pulumi": "^3.0.0"
     },
     "scripts": {
